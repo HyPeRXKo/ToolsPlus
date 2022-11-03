@@ -1,0 +1,7 @@
+name: ToolsPlus
+version: '${project.version}'
+main: fr.vlxproject.toolsplus.ToolsPlus
+api-version: 1.19
+authors: [ HyPeRXKo ]
+description: Evolutive tools system with levels and custom display
+website: https://vlxproject.fr
