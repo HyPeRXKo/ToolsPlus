@@ -1,0 +1,12 @@
+#Config not final.
+Prefix: '&7[&bToolsPlus&7]'
+efficiency: '&aYou have upgraded your efficiency level!'
+unbreaking: '&aYou have upgraded your unbreaking level!'
+fortune: '&aYou have upgraded your fortune level!'
+newlevel: '&7You are now level &b%level% &7.'
+newpoints: '&7You have now &b%points% &7enchants points.'
+silktouch: '&7You have buyed silk touch, you can switch &aON&7/&cOFF &7in the menu for no cost!'
+mending: '&7You have buyed mending!'
+reload: '&aThe configs have been reloaded.'
+newpick: '&aYou have receive your pickaxe.'
+Headerpickaxe: '&8-----------&6Pickaxe Info&8-----------'

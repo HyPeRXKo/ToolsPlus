@@ -1,0 +1,5 @@
+#TestConfig.
+configversion : 1.0
+#Give pickaxe experience if the block is placed by a player (if true, can lead to duplication if silk-touch give exp aswell)
+playerplacedblockgive-exp : false
+silktouchgive-exp : true
