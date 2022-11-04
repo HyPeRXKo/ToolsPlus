@@ -5,6 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,13 +23,19 @@ public class ToolsPlusCommand implements TabExecutor {
                     plugin.reloadAllConfigs();
                     new messagesUtils().reload(p);
                 }
+                else if(args[0].equalsIgnoreCase("addlevel")){
+                    ItemStack item = p.getInventory().getItemInMainHand();
+                    dataUtilsPickaxe dup = new dataUtilsPickaxe();
+                    if(dup.isToolsPlus(item)){
+                        dup.addLevelCommand(item, p);
+                    }
+                }
                 else if(args[0].equalsIgnoreCase("givetool")){
                     if(args[1].equalsIgnoreCase("pickaxe")){
                         p.getInventory().addItem(dataUtilsPickaxe.itemPickaxe());
                         new messagesUtils().newpick(p);
                     }
                 }
-                //else if(args[0].equalsIgnoreCase(addlevel)){}
             }
         }
         return true;
@@ -44,7 +51,7 @@ public class ToolsPlusCommand implements TabExecutor {
             return args1;
         }
         else if(args.length == 2){ //ToolsPlus <args1> <args2>
-            if(args[1].equalsIgnoreCase("GiveTool")){ //ToolsPlus GiveTool <args2>
+            if(args[0].equalsIgnoreCase("givetool")){ //ToolsPlus GiveTool <args2>
                 List<String> args2 = new ArrayList<>();
                 args2.add("Pickaxe");
                 return args2;

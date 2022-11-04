@@ -5,3 +5,8 @@ api-version: 1.19
 authors: [ HyPeRXKo ]
 description: Evolutive tools system with levels and custom display
 website: https://vlxproject.fr
+commands:
+  ToolsPlus:
+    description: Main command
+    usage: /<command>
+    aliases: tlps

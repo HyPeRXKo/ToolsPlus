@@ -1,6 +1,10 @@
 package fr.vlxproject.toolsplus;
 
+import fr.vlxproject.toolsplus.pickaxeutils.loreUtilsPickaxe;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 public class messagesUtils {
@@ -10,6 +14,17 @@ public class messagesUtils {
     public void efficiency(Player p) {
         String temp = plugin.getMessagesConfig().getString("Prefix") + " " + plugin.getMessagesConfig().getString("efficiency");
         p.sendMessage(ChatColor.translateAlternateColorCodes('&', temp));
+    }
+
+    public void actionBarXP(Player p,int XP, int MaxXP){
+        if(plugin.getConfig().getBoolean("XPactionbar")){
+            loreUtilsPickaxe lup = new loreUtilsPickaxe();
+            String temp = "&7XP: &b" + XP + "&7/&b" + MaxXP + lup.getProgressBar(XP, MaxXP);
+            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', temp)));
+        }
+        if(plugin.getConfig().getBoolean("XPSound")){
+            p.playSound(p, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 2);
+        }
     }
 
     public void unbreaking(Player p) {
@@ -27,7 +42,7 @@ public class messagesUtils {
         temp = temp.replace("%level%", String.valueOf(level));
         p.sendMessage(ChatColor.translateAlternateColorCodes('&', temp));
     }
-
+//ADD LEVEL UP SOUND
     public void newpoints(int points, Player p) {
         String temp = plugin.getMessagesConfig().getString("Prefix") + " " + plugin.getMessagesConfig().getString("newpoints");
         temp = temp.replace("%points%", String.valueOf(points));

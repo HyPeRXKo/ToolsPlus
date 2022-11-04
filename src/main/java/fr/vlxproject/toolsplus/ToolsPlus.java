@@ -28,7 +28,7 @@ public final class ToolsPlus extends JavaPlugin {
         // Plugin shutdown logic
     }
 
-    public FileConfiguration getBlocksConfig() {
+    public FileConfiguration getPickaxeblocksConfig() {
         return this.pickaxeblocksConfig;}
 
     public FileConfiguration getMessagesConfig(){
