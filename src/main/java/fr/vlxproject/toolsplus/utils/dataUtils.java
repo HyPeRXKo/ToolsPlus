@@ -1,9 +1,6 @@
-package fr.vlxproject.toolsplus.pickaxeutils;
+package fr.vlxproject.toolsplus.utils;
 
 import fr.vlxproject.toolsplus.ToolsPlus;
-import fr.vlxproject.toolsplus.messagesUtils;
-import net.md_5.bungee.api.ChatMessageType;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -16,7 +13,7 @@ import org.bukkit.persistence.PersistentDataType;
 
 import java.util.ArrayList;
 
-public class dataUtilsPickaxe {
+public class dataUtils {
 
     static ToolsPlus plugin = ToolsPlus.getPlugin(ToolsPlus.class);
     messagesUtils mu = new messagesUtils();
@@ -64,7 +61,7 @@ public class dataUtilsPickaxe {
             meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "level"), PersistentDataType.INTEGER, level + 1);
             meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "points"), PersistentDataType.INTEGER, points + 1);
             item.setItemMeta(meta);
-            loreUtilsPickaxe lup = new loreUtilsPickaxe();
+            loreUtils lup = new loreUtils();
             lup.UpdateLevelLine(item, level);
             lup.UpdatePointsLine(item, points + 1);
             lup.UpdateXPLine(item, newnewxp, newmaxxp);
@@ -76,7 +73,7 @@ public class dataUtilsPickaxe {
             meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "currentxp"), PersistentDataType.INTEGER, newxp);
             meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "maxxp"), PersistentDataType.INTEGER, maxxp);
             item.setItemMeta(meta);
-            new loreUtilsPickaxe().UpdateXPLine(item, newxp, maxxp);
+            new loreUtils().UpdateXPLine(item, newxp, maxxp);
             mu.actionBarXP(p, newxp, maxxp);
         }
     }
@@ -92,7 +89,7 @@ public class dataUtilsPickaxe {
         meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "level"), PersistentDataType.INTEGER, level + 1);
         meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "points"), PersistentDataType.INTEGER, points + 1);
         item.setItemMeta(meta);
-        loreUtilsPickaxe lup = new loreUtilsPickaxe();
+        loreUtils lup = new loreUtils();
         lup.UpdateLevelLine(item, level);
         lup.UpdatePointsLine(item, points + 1);
         lup.UpdateXPLine(item, 0, newmaxxp);

@@ -1,5 +1,6 @@
 package fr.vlxproject.toolsplus;
 
+import fr.vlxproject.toolsplus.commands.ToolsPlusCommand;
 import fr.vlxproject.toolsplus.listeners.PlayerBlockListener;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -27,6 +28,7 @@ public final class ToolsPlus extends JavaPlugin {
     public void onDisable() {
         // Plugin shutdown logic
     }
+
 
     public FileConfiguration getPickaxeblocksConfig() {
         return this.pickaxeblocksConfig;}

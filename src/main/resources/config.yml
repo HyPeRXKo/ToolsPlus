@@ -5,3 +5,4 @@ playerplacedblockgive-exp : false
 silktouchgive-exp : true
 XPactionbar : true
 XPSound : true
+LevelUpSound : true
