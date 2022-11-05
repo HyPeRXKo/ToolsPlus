@@ -25,7 +25,7 @@ public class messagesUtils {
             p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', temp)));
         }
         if(p.getPersistentDataContainer().get(new NamespacedKey(plugin, "XPSound"), PersistentDataType.INTEGER) == 1){
-            p.playSound(p, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 1, 2);
+            p.playSound(p, Sound.ENTITY_EXPERIENCE_ORB_PICKUP, (float) 0.2, 2);
         }
     }
 

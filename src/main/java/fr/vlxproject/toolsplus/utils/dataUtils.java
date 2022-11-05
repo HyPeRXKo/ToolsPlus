@@ -98,10 +98,6 @@ public class dataUtils {
         mu.actionBarXP(p, 0, newmaxxp);
     }
 
-
-
-
-
     public Integer nextLevelMath(int oldmaxxp){
         double random = (Math.random() * (1.35 - 1.15)) + 1.15;
         double addxp = Math.sqrt(oldmaxxp);

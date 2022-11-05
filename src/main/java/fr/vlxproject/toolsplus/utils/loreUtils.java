@@ -1,6 +1,7 @@
 package fr.vlxproject.toolsplus.utils;
 
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
@@ -59,6 +60,8 @@ public class loreUtils {
         meta.setLore(lore);
         item.setItemMeta(meta);
     }
+
+    public void UpdateEnchantsPickaxe(ItemStack item){}
 
 //------------------------------------------------------GETLINE---------------------------------------------------------
     public int getLevelLine(ArrayList<String> lore){
