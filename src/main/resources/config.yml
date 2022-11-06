@@ -6,3 +6,8 @@ silktouchgive-exp : true
 XPactionbar : true
 XPSound : true
 LevelUpSound : true
+efficost: "3,5,7,9,13"
+unbreakcost: "1,4,7"
+fortunecost: "5,8,12"
+mendingcost: 21
+silktouchcost : 18

@@ -17,13 +17,15 @@ public class GuiListener implements Listener {
         dataUtils du = new dataUtils();
         Inventory gui = Bukkit.createInventory(null, 9, ChatColor.translateAlternateColorCodes('&', plugin.getMessagesConfig().getString("UpgradeMenuTitle")));
         gui.setItem(0, du.ItemGuiEfficiency(item));
-        gui.setItem(1, du.itemGuiUnbreaking(item));
-        gui.setItem(2, du.itemGuiFortune(item));
+        gui.setItem(1, du.ItemGuiUnbreaking(item));
+        gui.setItem(2, du.ItemGuiFortune(item));
 
-        gui.setItem(4, du.itemGuiMending(item));
+        gui.setItem(4, du.ItemGuiMending(item));
 
-        gui.setItem(6, du.itemGuiSilkTouch(item));
+        gui.setItem(6, du.ItemGuiSilkTouch(item));
 
-        gui.setItem(8, du.barrier(9)); //integer code instead of args.
+        gui.setItem(8, du.Barrier(9)); //integer code instead of args.
+
+        p.openInventory(gui);
     }
 }

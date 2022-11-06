@@ -60,7 +60,6 @@ public class loreUtils {
         meta.setLore(lore);
         item.setItemMeta(meta);
     }
-
     public void UpdateEnchantsPickaxe(ItemStack item){}
 
 //------------------------------------------------------GETLINE---------------------------------------------------------

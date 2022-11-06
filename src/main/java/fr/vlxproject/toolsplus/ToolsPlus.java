@@ -4,6 +4,7 @@ import fr.vlxproject.toolsplus.commands.ToolsPlusCommand;
 import fr.vlxproject.toolsplus.listeners.GuiListener;
 import fr.vlxproject.toolsplus.listeners.PlayerBlockListener;
 import fr.vlxproject.toolsplus.listeners.PlayerFirstConnect;
+import fr.vlxproject.toolsplus.listeners.RightClickListener;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -26,6 +27,7 @@ public final class ToolsPlus extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerBlockListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerFirstConnect(), this);
         getServer().getPluginManager().registerEvents(new GuiListener(), this);
+        getServer().getPluginManager().registerEvents(new RightClickListener(), this);
     }
 
     @Override
