@@ -21,6 +21,12 @@ public class dataUtils {
     messagesUtils mu = new messagesUtils();
     public String cc(String string){
         return ChatColor.translateAlternateColorCodes('&', string);}
+    public int getsilktouchstate(ItemStack item){
+        if(item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin, "ToolsPlus"), PersistentDataType.INTEGER)){
+            return item.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(plugin, "silktouchstate"), PersistentDataType.INTEGER);
+        }
+        return 0;
+    }
 
 
     public static ItemStack itemPickaxe(){
@@ -100,7 +106,7 @@ public class dataUtils {
             lore.add(cc(temp));
         }
         if(unbreaklevel > 0){
-            if(unbreaklevel < 5){
+            if(unbreaklevel < 3){
                 temp = "&3&lUnbreakng &8[&c" + unbreaklevel + " &8> &a" + (unbreaklevel + 1) + "&8]";
                 meta.setDisplayName(cc(temp));
                 lore.add("");
@@ -136,7 +142,7 @@ public class dataUtils {
             lore.add(cc(temp));
         }
         if(fortunelevel > 0){
-            if(fortunelevel < 5){
+            if(fortunelevel < 3){
                 temp = "&6&lFortune &8[&c" + fortunelevel + " &8> &a" + (fortunelevel + 1) + "&8]";
                 meta.setDisplayName(cc(temp));
                 lore.add("");
@@ -185,10 +191,7 @@ public class dataUtils {
         ItemStack itemsilktouch = new ItemStack(Material.RESPAWN_ANCHOR);
         ItemMeta meta = itemsilktouch.getItemMeta();
         ArrayList<String> lore = new ArrayList<>();
-        if(item.containsEnchantment(Enchantment.SILK_TOUCH) && item.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(plugin, "SilkTouchState"), PersistentDataType.INTEGER) == 0){
-            item.getItemMeta().getPersistentDataContainer().set(new NamespacedKey(plugin, "SilkTouchState"), PersistentDataType.INTEGER, 1);
-        }
-        int silktouchstate = item.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(plugin, "SilkTouchState"), PersistentDataType.INTEGER);
+        int silktouchstate = getsilktouchstate(item);
         switch (silktouchstate){
             case 0:
                 temp = "&9&lSilk Touch &8[&c0 &8> &a1&8]";
@@ -305,6 +308,10 @@ public class dataUtils {
     }
     public int getSilkTouchCost(){
         return plugin.getConfig().getInt("silktouchcost");
+    }
+
+    public int getPoints(ItemStack item){
+        return item.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(plugin, "points"), PersistentDataType.INTEGER);
     }
 //----------------------ADD-----------------------------------
     public void addXP(ItemStack item, int XP, Player p){

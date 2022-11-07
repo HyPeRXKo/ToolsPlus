@@ -29,6 +29,15 @@ public class messagesUtils {
         }
     }
 
+    public void actionbarSwitchSilkTouch(Player p, int silktouchstate){
+        if(p.getPersistentDataContainer().get(new NamespacedKey(plugin, "XPactionbar"), PersistentDataType.INTEGER) == 1){
+            String temp = "";
+            if(silktouchstate == 1){temp = "&7Silk Touch &cOFF";}
+            else if(silktouchstate == 2){temp = "&7Silk Touch &aON";}
+            p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', temp)));
+        }
+    }
+
     public void unbreaking(Player p) {
         String temp = plugin.getMessagesConfig().getString("Prefix") + " " + plugin.getMessagesConfig().getString("unbreaking");
         p.sendMessage(ChatColor.translateAlternateColorCodes('&', temp));
@@ -36,6 +45,11 @@ public class messagesUtils {
 
     public void fortune(Player p) {
         String temp = plugin.getMessagesConfig().getString("Prefix") + " " + plugin.getMessagesConfig().getString("fortune");
+        p.sendMessage(ChatColor.translateAlternateColorCodes('&', temp));
+    }
+
+    public void errorpoints(Player p) {
+        String temp = plugin.getMessagesConfig().getString("Prefix") + " " + plugin.getMessagesConfig().getString("errorpoints");
         p.sendMessage(ChatColor.translateAlternateColorCodes('&', temp));
     }
 

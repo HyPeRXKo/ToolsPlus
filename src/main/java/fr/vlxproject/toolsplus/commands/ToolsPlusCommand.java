@@ -3,6 +3,7 @@ package fr.vlxproject.toolsplus.commands;
 import fr.vlxproject.toolsplus.ToolsPlus;
 import fr.vlxproject.toolsplus.utils.dataUtils;
 import fr.vlxproject.toolsplus.utils.messagesUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -17,6 +18,8 @@ import java.util.List;
 public class ToolsPlusCommand implements TabExecutor {
 
     ToolsPlus plugin = ToolsPlus.getPlugin(ToolsPlus.class);
+    private String help = ChatColor.translateAlternateColorCodes('&', "&b&lToolsPlus" +
+            "\n");
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
@@ -72,41 +75,66 @@ public class ToolsPlusCommand implements TabExecutor {
                     }
                 }
             }
+            else{p.sendMessage(help);}
         }
         return true;
     }
 
+
+    private List<String> args1 = new ArrayList<>();
+    private List<String> args2tool = new ArrayList<>();
+    private List<String> args2settings = new ArrayList<>();
+    private List<String> args3truefalse = new ArrayList<>();
+
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String label, String[] args) {
-        if(args.length == 1){ //ToolsPlus <args1>
-            List<String> args1 = new ArrayList<>();
+        if(args1.isEmpty()){
             args1.add("Givetool");
             args1.add("Reload");
             args1.add("Addlevel");
             args1.add("Settings");
-            return args1;
+        }
+        if(args2tool.isEmpty()) {
+            args2tool.add("Pickaxe");
+        }
+        if(args2settings.isEmpty()){
+            args2settings.add("Actionbar");
+            args2settings.add("Xpsound");
+            args2settings.add("Levelupsound");
+        }
+        if(args3truefalse.isEmpty()){
+            args3truefalse.add("True");
+            args3truefalse.add("False");
+        }
+
+        List<String> result = new ArrayList<>();
+        if(args.length == 1){ //ToolsPlus <args1>
+            for(String a : args1){
+                if(a.toLowerCase().startsWith(args[0].toLowerCase())) result.add(a);
+            }
+            return result;
         }
         else if(args.length == 2){ //ToolsPlus <args1> <args2>
-            if(args[0].equalsIgnoreCase("givetool")){ //ToolsPlus GiveTool <args2>
-                List<String> args2 = new ArrayList<>();
-                args2.add("Pickaxe");
-                return args2;
+            if(args[0].equalsIgnoreCase("givetool")){//ToolsPlus GiveTool <args2>
+                for(String a : args2tool){
+                    if(a.toLowerCase().startsWith(args[1].toLowerCase())) result.add(a);
+                }
+                return result;
 
             }
             if(args[0].equalsIgnoreCase("settings")){
-                List<String> args2 = new ArrayList<>();
-                args2.add("Actionbar");
-                args2.add("Xpsound");
-                args2.add("Levelupsound");
-                return args2;
+                for(String a : args2settings){
+                    if(a.toLowerCase().startsWith(args[1].toLowerCase())) result.add(a);
+                }
+                return result;
             }
         }
         else if(args.length == 3){ //ToolsPlus <args1> <args2> <args3>
             if(args[1].equalsIgnoreCase("actionbar") || args[1].equalsIgnoreCase("xpsound") || args[1].equalsIgnoreCase("levelupsound")){
-                List<String> args3 = new ArrayList<>();
-                args3.add("True");
-                args3.add("False");
-                return args3;
+                for(String a : args3truefalse){
+                    if(a.toLowerCase().startsWith(args[2].toLowerCase())) result.add(a);
+                }
+                return result;
             }
         }
         return new ArrayList<>();
