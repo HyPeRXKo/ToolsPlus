@@ -1,6 +1,6 @@
 name: ToolsPlus
 version: '${project.version}'
-main: fr.vlxproject.toolsplus.ToolsPlus
+main: fr.infinitystudios.toolsplus.ToolsPlus
 api-version: 1.19
 authors: [ HyPeRXKo ]
 description: Evolutive tools system with levels and custom display

@@ -1,10 +1,10 @@
-package fr.vlxproject.toolsplus;
+package fr.infinitystudios.toolsplus;
 
-import fr.vlxproject.toolsplus.commands.ToolsPlusCommand;
-import fr.vlxproject.toolsplus.listeners.GuiListener;
-import fr.vlxproject.toolsplus.listeners.PlayerBlockListener;
-import fr.vlxproject.toolsplus.listeners.PlayerFirstConnect;
-import fr.vlxproject.toolsplus.listeners.RightClickListener;
+import fr.infinitystudios.toolsplus.listeners.RightClickListener;
+import fr.infinitystudios.toolsplus.commands.ToolsPlusCommand;
+import fr.infinitystudios.toolsplus.listeners.GuiListener;
+import fr.infinitystudios.toolsplus.listeners.PlayerBlockListener;
+import fr.infinitystudios.toolsplus.listeners.PlayerFirstConnect;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;

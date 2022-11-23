@@ -1,6 +1,6 @@
-package fr.vlxproject.toolsplus.utils;
+package fr.infinitystudios.toolsplus.utils;
 
-import fr.vlxproject.toolsplus.ToolsPlus;
+import fr.infinitystudios.toolsplus.ToolsPlus;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;

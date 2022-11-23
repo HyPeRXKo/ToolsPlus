@@ -1,6 +1,6 @@
-package fr.vlxproject.toolsplus.utils;
+package fr.infinitystudios.toolsplus.utils;
 
-import fr.vlxproject.toolsplus.ToolsPlus;
+import fr.infinitystudios.toolsplus.ToolsPlus;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;

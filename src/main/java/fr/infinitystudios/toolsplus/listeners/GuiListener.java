@@ -1,7 +1,7 @@
-package fr.vlxproject.toolsplus.listeners;
+package fr.infinitystudios.toolsplus.listeners;
 
-import fr.vlxproject.toolsplus.ToolsPlus;
-import fr.vlxproject.toolsplus.utils.dataUtils;
+import fr.infinitystudios.toolsplus.ToolsPlus;
+import fr.infinitystudios.toolsplus.utils.dataUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

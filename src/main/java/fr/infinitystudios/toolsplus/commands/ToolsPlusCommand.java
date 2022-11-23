@@ -1,10 +1,9 @@
-package fr.vlxproject.toolsplus.commands;
+package fr.infinitystudios.toolsplus.commands;
 
-import fr.vlxproject.toolsplus.ToolsPlus;
-import fr.vlxproject.toolsplus.utils.dataUtils;
-import fr.vlxproject.toolsplus.utils.messagesUtils;
+import fr.infinitystudios.toolsplus.ToolsPlus;
+import fr.infinitystudios.toolsplus.utils.dataUtils;
+import fr.infinitystudios.toolsplus.utils.messagesUtils;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

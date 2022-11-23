@@ -1,6 +1,6 @@
-package fr.vlxproject.toolsplus.utils;
+package fr.infinitystudios.toolsplus.utils;
 
-import fr.vlxproject.toolsplus.ToolsPlus;
+import fr.infinitystudios.toolsplus.ToolsPlus;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;

@@ -1,6 +1,6 @@
-package fr.vlxproject.toolsplus.listeners;
+package fr.infinitystudios.toolsplus.listeners;
 
-import fr.vlxproject.toolsplus.ToolsPlus;
+import fr.infinitystudios.toolsplus.ToolsPlus;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

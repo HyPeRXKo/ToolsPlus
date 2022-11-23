@@ -1,12 +1,10 @@
-package fr.vlxproject.toolsplus.listeners;
+package fr.infinitystudios.toolsplus.listeners;
 
-import fr.vlxproject.toolsplus.ToolsPlus;
-import fr.vlxproject.toolsplus.utils.dataUtils;
-import fr.vlxproject.toolsplus.utils.enchantsUtils;
-import fr.vlxproject.toolsplus.utils.messagesUtils;
-import org.bukkit.Bukkit;
+import fr.infinitystudios.toolsplus.ToolsPlus;
+import fr.infinitystudios.toolsplus.utils.dataUtils;
+import fr.infinitystudios.toolsplus.utils.enchantsUtils;
+import fr.infinitystudios.toolsplus.utils.messagesUtils;
 import org.bukkit.ChatColor;
-import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
