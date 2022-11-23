@@ -48,8 +48,23 @@ public class messagesUtils {
         p.sendMessage(ChatColor.translateAlternateColorCodes('&', temp));
     }
 
+    public void errorUpgradeTool(Player p){
+        String temp = plugin.getMessagesConfig().getString("Prefix") + " " + plugin.getMessagesConfig().getString("errorupgradetool");
+        p.sendMessage(ChatColor.translateAlternateColorCodes('&', temp));
+    }
+
+    public void upgradeTool(Player p){
+        String temp = plugin.getMessagesConfig().getString("Prefix") + " " + plugin.getMessagesConfig().getString("upgradetool");
+        p.sendMessage(ChatColor.translateAlternateColorCodes('&', temp));
+    }
+
     public void errorpoints(Player p) {
         String temp = plugin.getMessagesConfig().getString("Prefix") + " " + plugin.getMessagesConfig().getString("errorpoints");
+        p.sendMessage(ChatColor.translateAlternateColorCodes('&', temp));
+    }
+
+    public void errorcommand(Player p){
+        String temp = plugin.getMessagesConfig().getString("Prefix") + " " + plugin.getMessagesConfig().getString("errorcommand");
         p.sendMessage(ChatColor.translateAlternateColorCodes('&', temp));
     }
 

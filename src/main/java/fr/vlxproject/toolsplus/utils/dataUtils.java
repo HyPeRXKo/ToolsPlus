@@ -21,17 +21,13 @@ public class dataUtils {
     messagesUtils mu = new messagesUtils();
     public String cc(String string){
         return ChatColor.translateAlternateColorCodes('&', string);}
-    public int getsilktouchstate(ItemStack item){
-        if(item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin, "ToolsPlus"), PersistentDataType.INTEGER)){
-            return item.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(plugin, "silktouchstate"), PersistentDataType.INTEGER);
-        }
-        return 0;
-    }
 
+
+//----------------------ITEMS---------------------------------
 
     public static ItemStack itemPickaxe(){
         String temp;
-        ItemStack item = new ItemStack(Material.IRON_PICKAXE);
+        ItemStack item = new ItemStack(Material.WOODEN_PICKAXE);
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', "&b&lToolsPlus Pickaxe &4&lDEV"));
         ArrayList<String> lore = new ArrayList<>();
@@ -273,7 +269,7 @@ public class dataUtils {
         }
         return null;
     }
-
+    //----------------------GET-------------------------------
     public int getEffiCost(int effilevel){
         int[] costlist = Arrays.stream(plugin.getConfig().getString("efficost").split(",")).mapToInt(Integer::parseInt).toArray();
         switch (effilevel){
@@ -309,11 +305,10 @@ public class dataUtils {
     public int getSilkTouchCost(){
         return plugin.getConfig().getInt("silktouchcost");
     }
-
     public int getPoints(ItemStack item){
         return item.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(plugin, "points"), PersistentDataType.INTEGER);
     }
-//----------------------ADD-----------------------------------
+    //----------------------ADD-----------------------------------
     public void addXP(ItemStack item, int XP, Player p){
         int oldxp = item.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(plugin, "currentxp"), PersistentDataType.INTEGER);
         int maxxp = item.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(plugin, "maxxp"), PersistentDataType.INTEGER);
@@ -366,12 +361,76 @@ public class dataUtils {
         mu.newpoints(points + 1, p);
         mu.actionBarXP(p, 0, newmaxxp);
     }
+    public void addLevelCommandMult(ItemStack item, Player p, int commandlevel) {
+        int maxxp = item.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(plugin, "maxxp"), PersistentDataType.INTEGER);
+        int level = item.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(plugin, "level"), PersistentDataType.INTEGER);
+        int points = item.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(plugin, "points"), PersistentDataType.INTEGER);
+        ItemMeta meta = item.getItemMeta();
+
+        int newpoints = points + (commandlevel - level);
+        int newmaxxp = maxxp;
+        for (int i = level; i <= commandlevel; i++) {
+            newmaxxp = nextLevelMath(newmaxxp);
+        }
+        if(newmaxxp == 0) return;
+
+        meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "currentxp"), PersistentDataType.INTEGER, 0);
+        meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "maxxp"), PersistentDataType.INTEGER, newmaxxp);
+        meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "level"), PersistentDataType.INTEGER, commandlevel);
+        meta.getPersistentDataContainer().set(new NamespacedKey(plugin, "points"), PersistentDataType.INTEGER, newpoints);
+        item.setItemMeta(meta);
+        loreUtils lup = new loreUtils();
+        lup.UpdateLevelLine(item, commandlevel - 1);
+        lup.UpdatePointsLine(item, newpoints);
+        lup.UpdateXPLine(item, 0, newmaxxp);
+        mu.newlevel(commandlevel, p);
+        mu.newpoints(newpoints, p);
+        mu.actionBarXP(p, 0, newmaxxp);
+        plugin.getLogger().severe("check 3");
+
+    }
+    public void upgradeToolCommand(ItemStack item, Player p){
+        switch (item.getType()){
+            case WOODEN_PICKAXE:
+                item.setType(Material.STONE_PICKAXE);
+                mu.upgradeTool(p);
+                break;
+            case STONE_PICKAXE:
+                item.setType(Material.IRON_PICKAXE);
+                mu.upgradeTool(p);
+                break;
+            case IRON_PICKAXE:
+                item.setType(Material.GOLDEN_PICKAXE);
+                mu.upgradeTool(p);
+                break;
+            case GOLDEN_PICKAXE:
+                item.setType(Material.DIAMOND_PICKAXE);
+                mu.upgradeTool(p);
+                break;
+            case DIAMOND_PICKAXE:
+                item.setType(Material.NETHERITE_PICKAXE);
+                mu.upgradeTool(p);
+                break;
+            case NETHERITE_PICKAXE:
+                mu.errorUpgradeTool(p);
+                mu.upgradeTool(p);
+                break;
+        }
+    }
+    //-------------------UTILS---------------------------------
     public Integer nextLevelMath(int oldmaxxp){
         double random = (Math.random() * (1.35 - 1.15)) + 1.15;
         double addxp = Math.sqrt(oldmaxxp);
         int xp = (int) Math.pow(addxp, random);
         return oldmaxxp + (int) addxp + xp;
     }
+    public int getsilktouchstate(ItemStack item){
+        if(item.getItemMeta().getPersistentDataContainer().has(new NamespacedKey(plugin, "ToolsPlus"), PersistentDataType.INTEGER)){
+            return item.getItemMeta().getPersistentDataContainer().get(new NamespacedKey(plugin, "silktouchstate"), PersistentDataType.INTEGER);
+        }
+        return 0;
+    }
+
     public boolean isToolsPlus(ItemStack item){
         return item != null
                 && item.getType() != Material.AIR

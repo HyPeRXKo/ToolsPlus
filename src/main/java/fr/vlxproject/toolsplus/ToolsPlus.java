@@ -5,6 +5,7 @@ import fr.vlxproject.toolsplus.listeners.GuiListener;
 import fr.vlxproject.toolsplus.listeners.PlayerBlockListener;
 import fr.vlxproject.toolsplus.listeners.PlayerFirstConnect;
 import fr.vlxproject.toolsplus.listeners.RightClickListener;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -19,6 +20,7 @@ public final class ToolsPlus extends JavaPlugin {
     private File messagesConfigFile;
     private FileConfiguration pickaxeblocksConfig;
     private FileConfiguration messagesConfig;
+    private double configversion = 1.1;
 
     @Override
     public void onEnable() {
@@ -28,6 +30,7 @@ public final class ToolsPlus extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerFirstConnect(), this);
         getServer().getPluginManager().registerEvents(new GuiListener(), this);
         getServer().getPluginManager().registerEvents(new RightClickListener(), this);
+        checkconfig();
     }
 
     @Override
@@ -35,6 +38,12 @@ public final class ToolsPlus extends JavaPlugin {
         // Plugin shutdown logic
     }
 
+
+    public void checkconfig(){
+        if(getConfig().getDouble("configversion") != configversion){
+            Bukkit.getLogger().severe("[ToolsPlus] Please regenerate your configs");
+        }
+    }
 
     public FileConfiguration getPickaxeblocksConfig() {
         return this.pickaxeblocksConfig;}

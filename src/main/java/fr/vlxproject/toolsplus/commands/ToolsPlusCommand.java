@@ -4,6 +4,7 @@ import fr.vlxproject.toolsplus.ToolsPlus;
 import fr.vlxproject.toolsplus.utils.dataUtils;
 import fr.vlxproject.toolsplus.utils.messagesUtils;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -27,14 +28,29 @@ public class ToolsPlusCommand implements TabExecutor {
             Player p = (Player) sender;
             if(args.length > 0){
                 if(args[0].equalsIgnoreCase("reload")){
-                    plugin.reloadAllConfigs();
-                    new messagesUtils().reload(p);
+                    if(p.isOp()) {
+                        plugin.reloadAllConfigs();
+                        new messagesUtils().reload(p);
+                    }
                 }
                 else if(args[0].equalsIgnoreCase("addlevel")){
                     ItemStack item = p.getInventory().getItemInMainHand();
                     dataUtils dup = new dataUtils();
-                    if(dup.isToolsPlus(item)){
-                        dup.addLevelCommand(item, p);
+                    if(dup.isToolsPlus(item)) {
+                        if (args.length > 1) {
+                            int commandlevel;
+                            try{
+                                commandlevel = Integer.parseInt(args[1]);
+                            }
+                            catch (NumberFormatException e){
+                                messagesUtils mu = new messagesUtils();
+                                mu.errorcommand(p);
+                                return true;
+                            }
+                            dup.addLevelCommandMult(item, p, commandlevel);
+                        } else {
+                            dup.addLevelCommand(item, p);
+                        }
                     }
                 }
                 else if(args[0].equalsIgnoreCase("givetool")){
@@ -43,6 +59,13 @@ public class ToolsPlusCommand implements TabExecutor {
                         p.getInventory().addItem(dataUtils.itemPickaxe());
                         new messagesUtils().newpick(p);
                     }
+                    }
+                }
+                else if(args[0].equalsIgnoreCase("upgradetool")){
+                    ItemStack item = p.getInventory().getItemInMainHand();
+                    dataUtils dup = new dataUtils();
+                    if(dup.isToolsPlus(item)){
+                        dup.upgradeToolCommand(item, p);
                     }
                 }
                 else if(args[0].equalsIgnoreCase("settings")){
@@ -92,6 +115,7 @@ public class ToolsPlusCommand implements TabExecutor {
             args1.add("Givetool");
             args1.add("Reload");
             args1.add("Addlevel");
+            args1.add("UpgradeTool");
             args1.add("Settings");
         }
         if(args2tool.isEmpty()) {
